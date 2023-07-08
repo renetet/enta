@@ -19,8 +19,8 @@ const whenExternalScripts = (items = []) =>
   SITE.googleAnalyticsId ? (Array.isArray(items) ? items.map((item) => item()) : [items()]) : [];
 
 export default defineConfig({
-  site: SITE.origin,
-  base: SITE.basePathname,
+  site: 'https://enta.at',
+  base: '/',
   trailingSlash: SITE.trailingSlash ? 'always' : 'never',
 
   output: 'static',
