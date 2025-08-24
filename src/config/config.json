@@ -4,8 +4,8 @@
     "base_url": "https://enta.at",
     "base_path": "/",
     "trailing_slash": false,
-    "favicon": "/images/favicon.png",
-    "logo": "/images/logo.png",
+    "favicon": "/images/enta-favicon.png",
+    "logo": "/images/enta-logo.png",
     "logo_width": "200",
     "logo_height": "34",
     "logo_text": "ENTA"
