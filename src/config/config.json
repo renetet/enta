@@ -1,0 +1,35 @@
+{
+  "site": {
+    "title": "ENTA",
+    "base_url": "https://enta.at",
+    "base_path": "/",
+    "trailing_slash": false,
+    "favicon": "/images/favicon.png",
+    "logo": "/images/logo.png",
+    "logo_width": "200",
+    "logo_height": "34",
+    "logo_text": "ENTA"
+  },
+
+  "settings": {
+    "pagination": 5,
+    "summary_length": 100
+  },
+
+  "metadata": {
+    "meta_author": "ENTAr",
+    "meta_image": "/images/og-image.png",
+    "meta_description": "ENTA"
+  },
+
+  "params": {
+    "contact_form_action": "#",
+    "copyright": "Copyright © 2025 [ENTA](https://enta.at)"
+  },
+
+  "contactinfo": {
+    "address": "Straße 01 <br/> 1010, Wien",
+    "email": "info@enta.at",
+    "phone": "+43 000 111"
+  }
+}
