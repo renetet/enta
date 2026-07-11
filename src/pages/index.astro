@@ -1,0 +1,340 @@
+---
+import Base from "@/layouts/Base.astro";
+import IntegrationStrip from "@/components/IntegrationStrip.astro";
+import i18n from "@/config/i18n.json";
+import { FaCheck, FaFileInvoice, FaHeadset, FaProjectDiagram, FaRocket, FaSearch, FaSignal } from "react-icons/fa";
+
+const urlLang = Astro.url.searchParams.get("lang");
+const lang = urlLang === "en" ? "en" : "de";
+const t = i18n[lang];
+const heroSlides = [
+  {
+    image: "/images/home-slider-planning.webp",
+    alt: lang === "en"
+      ? "Business team planning AI automation in a bright Vienna office"
+      : "Business-Team plant AI-Automatisierung in einem hellen Wiener Buero",
+    kicker: t.home.slider.slides[0].kicker,
+    kickerKey: "home.slider.slides.0.kicker",
+    title: t.home.slider.slides[0].title,
+    titleKey: "home.slider.slides.0.title",
+    metric: "01",
+  },
+  {
+    image: "/images/home-slider-workflow.webp",
+    alt: lang === "en"
+      ? "Automation workflow dashboard with connected nodes"
+      : "Automatisierungs-Dashboard mit verbundenen Workflow-Nodes",
+    kicker: t.home.slider.slides[1].kicker,
+    kickerKey: "home.slider.slides.1.kicker",
+    title: t.home.slider.slides[1].title,
+    titleKey: "home.slider.slides.1.title",
+    metric: "n8n",
+  },
+  {
+    image: "/images/home-slider-monitoring.webp",
+    alt: lang === "en"
+      ? "Consultants reviewing automation analytics on a large screen"
+      : "Berater pruefen Automatisierungs-Analytics auf einem grossen Bildschirm",
+    kicker: t.home.slider.slides[2].kicker,
+    kickerKey: "home.slider.slides.2.kicker",
+    title: t.home.slider.slides[2].title,
+    titleKey: "home.slider.slides.2.title",
+    metric: "24/7",
+  },
+];
+---
+
+<Base
+  title={t.home.hero.title}
+  meta_title={lang === "en" ? "AI Automation in Vienna | n8n Workflows | enta.at" : "AI Automatisierung Wien | n8n Workflows | enta.at"}
+  description={t.home.hero.subtitle}
+>
+  <section class="home-hero section relative overflow-hidden py-16 lg:py-24">
+    <div class="hero-orb hero-orb-left"></div>
+    <div class="hero-orb hero-orb-right"></div>
+    <div class="container">
+      <div class="relative z-10 mx-auto max-w-[1200px]">
+        <div class="grid gap-14 items-center lg:grid-cols-[0.92fr_1.08fr]">
+          <div class="relative z-10">
+            <p class="eyebrow mb-6">
+              <span></span> AI Automation · Wien
+            </p>
+            <h1 data-i18n="home.hero.title" class="mb-7 max-w-4xl text-[2.7rem] font-bold leading-[1.06] tracking-[-0.045em] text-slate-950 md:text-[4.25rem]">
+              {t.home.hero.title}
+            </h1>
+            <p data-i18n="home.hero.subtitle" class="mb-9 max-w-2xl text-lg leading-8 text-slate-600 md:text-xl">
+              {t.home.hero.subtitle}
+            </p>
+            <div class="mb-8 flex flex-wrap gap-3">
+              {t.home.proof.map((item: string, index: number) => (
+                <span class="inline-flex items-center gap-2.5 text-sm font-bold text-slate-700">
+                  <span class="flex h-5 w-5 items-center justify-center rounded-full bg-emerald-50"><FaCheck className="text-[10px] text-emerald-600" /></span>
+                  <span data-i18n={`home.proof.${index}`}>{item}</span>
+                </span>
+              ))}
+            </div>
+            <div class="flex flex-wrap gap-3">
+              <a
+                href={lang === "en" ? "/contact?lang=en" : "/kontakt?lang=de"}
+                class="btn btn-primary px-8 py-3.5 text-white"
+                data-i18n="home.hero.cta"
+              >
+                {t.home.hero.cta}
+              </a>
+              <a
+                href={`/automation?lang=${lang}`}
+                class="btn btn-outline-primary px-8 py-3.5"
+                data-i18n="nav.automation"
+              >
+                {t.nav.automation}
+              </a>
+            </div>
+          </div>
+          <div class="relative">
+            <div class="hero-note hero-note-top">
+              <span class="status-dot"></span>
+              <div><strong>24/7</strong><small>{lang === "en" ? "Automation active" : "Automation aktiv"}</small></div>
+            </div>
+            <div class="hero-slider fade-up" data-hero-slider>
+              <div class="hero-slider-viewport">
+                {heroSlides.map((slide, index) => (
+                  <figure class={`hero-slide ${index === 0 ? "is-active" : ""}`} data-hero-slide>
+                    <img
+                      src={slide.image}
+                      alt={slide.alt}
+                      class="hero-slide-image"
+                      loading={index === 0 ? "eager" : "lazy"}
+                    />
+                    <figcaption class="hero-slide-caption">
+                      <span data-i18n={slide.kickerKey}>{slide.kicker}</span>
+                      <strong data-i18n={slide.titleKey}>{slide.title}</strong>
+                    </figcaption>
+                  </figure>
+                ))}
+                <span class="photo-pulse photo-pulse-1"></span>
+                <span class="photo-pulse photo-pulse-2"></span>
+                <span class="photo-pulse photo-pulse-3"></span>
+                <div class="hero-slider-panel">
+                  <div>
+                    <p class="text-xs font-black uppercase tracking-[0.22em] text-primary" data-i18n="home.slider.panel.kicker">
+                      {t.home.slider.panel.kicker}
+                    </p>
+                    <p class="mt-1 text-sm font-black text-slate-950" data-i18n="home.slider.panel.title">
+                      {t.home.slider.panel.title}
+                    </p>
+                  </div>
+                  <span data-hero-metric>{heroSlides[0].metric}</span>
+                </div>
+              </div>
+              <div class="mt-3 grid grid-cols-3 gap-2.5">
+                <div class="metric-card">
+                  <p class="text-2xl font-bold text-slate-950">8.5h</p>
+                  <p class="text-xs font-semibold text-slate-500" data-i18n="home.slider.stats.0">{t.home.slider.stats[0]}</p>
+                </div>
+                <div class="metric-card">
+                  <p class="text-2xl font-bold text-slate-950">42</p>
+                  <p class="text-xs font-semibold text-slate-500" data-i18n="home.slider.stats.1">{t.home.slider.stats[1]}</p>
+                </div>
+                <div class="metric-card">
+                  <p class="text-2xl font-bold text-slate-950">99%</p>
+                  <p class="text-xs font-semibold text-slate-500" data-i18n="home.slider.stats.2">{t.home.slider.stats[2]}</p>
+                </div>
+              </div>
+              <div class="hero-slider-dots" aria-label={lang === "en" ? "Hero slides" : "Hero Slides"}>
+                {heroSlides.map((slide, index) => (
+                  <button
+                    type="button"
+                    class={`hero-slider-dot ${index === 0 ? "is-active" : ""}`}
+                    data-hero-dot
+                    data-metric={slide.metric}
+                    aria-label={`${lang === "en" ? "Show slide" : "Slide anzeigen"} ${index + 1}`}
+                    aria-current={index === 0 ? "true" : "false"}
+                  />
+                ))}
+                <button
+                  type="button"
+                  class="hero-slider-pause"
+                  data-slider-pause
+                  aria-pressed="false"
+                  aria-label={lang === "en" ? "Pause slideshow" : "Slideshow pausieren"}
+                  data-pause-label={lang === "en" ? "Pause slideshow" : "Slideshow pausieren"}
+                  data-play-label={lang === "en" ? "Play slideshow" : "Slideshow starten"}
+                >
+                  <span aria-hidden="true" data-pause-icon>Ⅱ</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-white py-20">
+    <div class="container">
+      <div class="mb-12 text-center">
+        <p class="section-kicker">{lang === "en" ? "Your advantage" : "Ihr Vorteil"}</p>
+        <h2 data-i18n="home.benefits.title" class="section-title">{t.home.benefits.title}</h2>
+      </div>
+      <div class="row gy-6 justify-center text-center">
+        {t.home.benefits.items.map((item: string, index: number) => (
+          <div class="md:col-4">
+            <div class="benefit-card h-full">
+              <span>0{index + 1}</span>
+              <p data-i18n={`home.benefits.items.${index}`} class="text-lg font-bold leading-7 text-slate-900">{item}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="integration-band py-8">
+    <div class="container">
+      <IntegrationStrip />
+    </div>
+  </section>
+
+  <section class="section use-case-section py-24">
+    <div class="container">
+      <div class="mb-10 max-w-3xl">
+        <p class="section-kicker">Use cases</p>
+        <h2 data-i18n="home.use_cases.title" class="section-title">{t.home.use_cases.title}</h2>
+      </div>
+      <div class="grid gap-4 md:grid-cols-2">
+        {t.home.use_cases.items.map((item: any, index: number) => (
+          <article class="use-case-card group">
+            <div class="mb-7 flex h-12 w-12 items-center justify-center rounded-xl bg-red-50 text-primary transition group-hover:bg-primary group-hover:text-white">
+              {index === 0 ? <FaSearch /> : index === 1 ? <FaHeadset /> : index === 2 ? <FaFileInvoice /> : <FaSignal />}
+            </div>
+            <div class="absolute right-6 top-6 text-xs font-black tracking-[0.2em] text-slate-300">0{index + 1}</div>
+            <h3 data-i18n={`home.use_cases.items.${index}.title`} class="mb-3 text-xl font-bold">{item.title}</h3>
+            <p data-i18n={`home.use_cases.items.${index}.description`} class="leading-7 text-slate-600">{item.description}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section py-24">
+    <div class="container">
+      <div class="text-center mb-8">
+        <p class="section-kicker">{lang === "en" ? "From idea to impact" : "Von der Idee zur Wirkung"}</p>
+        <h2 data-i18n="home.how_it_works.title" class="section-title">{t.home.how_it_works.title}</h2>
+      </div>
+      <div class="row gy-6 justify-center">
+        {t.home.how_it_works.steps.map((step: any, index: number) => (
+          <div class="md:col-4">
+            <div class="process-card scroll-animate group relative h-full p-8 text-center">
+              <span class="absolute left-6 top-6 inline-flex h-9 w-9 items-center justify-center rounded-lg border border-slate-200 bg-white font-semibold text-primary">
+                {index + 1}
+              </span>
+              <div class="mx-auto mb-6 mt-6 flex h-16 w-16 items-center justify-center rounded-xl bg-primary/10 text-primary text-2xl transition duration-500 group-hover:scale-105">
+                {index === 0 ? <FaSearch /> : index === 1 ? <FaProjectDiagram /> : <FaRocket />}
+              </div>
+              <h3 data-i18n={`home.how_it_works.steps.${index}.title`} class="text-xl font-semibold mb-3">{step.title}</h3>
+              <p data-i18n={`home.how_it_works.steps.${index}.description`} class="text-text-dark/80 leading-7">{step.description}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="pb-24">
+    <div class="container">
+      <div class="cta-panel">
+        <div class="relative z-10 max-w-2xl">
+          <p class="mb-4 text-sm font-black uppercase tracking-[0.24em] text-red-200">{lang === "en" ? "Ready when you are" : "Bereit, wenn Sie es sind"}</p>
+          <h2 class="mb-5 text-3xl font-bold tracking-[-0.03em] text-white md:text-5xl">{lang === "en" ? "Turn repetitive work into reliable workflows." : "Machen Sie aus Routinearbeit verlässliche Workflows."}</h2>
+          <p class="mb-8 text-lg leading-8 text-white/70">{lang === "en" ? "In a free initial call, we identify where automation will create the most value for your team." : "In einem kostenlosen Erstgespräch klären wir, wo Automatisierung für Ihr Team den größten Nutzen schafft."}</p>
+          <a href={lang === "en" ? "/contact?lang=en" : "/kontakt?lang=de"} class="btn bg-white px-8 py-3.5 text-slate-950 hover:-translate-y-0.5 hover:bg-slate-100">
+            {t.home.hero.cta} <span class="ml-2">→</span>
+          </a>
+        </div>
+        <div class="cta-grid"></div>
+      </div>
+    </div>
+  </section>
+
+  <script type="module">
+    const animatedElements = document.querySelectorAll('.scroll-animate');
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('scroll-animate-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.2 });
+
+      animatedElements.forEach((element, index) => {
+        element.style.animationDelay = `${index * 100}ms`;
+        observer.observe(element);
+      });
+    } else {
+      animatedElements.forEach((element) => element.classList.add('scroll-animate-visible'));
+    }
+
+    const slider = document.querySelector('[data-hero-slider]');
+    if (slider) {
+      const slides = Array.from(slider.querySelectorAll('[data-hero-slide]'));
+      const dots = Array.from(slider.querySelectorAll('[data-hero-dot]'));
+      const metric = slider.querySelector('[data-hero-metric]');
+      const pauseButton = slider.querySelector('[data-slider-pause]');
+      const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+      let activeIndex = 0;
+      let timer;
+      let manuallyPaused = reduceMotion.matches;
+
+      const setActiveSlide = (nextIndex) => {
+        activeIndex = (nextIndex + slides.length) % slides.length;
+        slides.forEach((slide, index) => slide.classList.toggle('is-active', index === activeIndex));
+        dots.forEach((dot, index) => {
+          dot.classList.toggle('is-active', index === activeIndex);
+          dot.setAttribute('aria-current', index === activeIndex ? 'true' : 'false');
+        });
+        if (metric && dots[activeIndex]) {
+          metric.textContent = dots[activeIndex].dataset.metric;
+        }
+      };
+
+      const startSlider = () => {
+        window.clearInterval(timer);
+        if (manuallyPaused || reduceMotion.matches) return;
+        timer = window.setInterval(() => setActiveSlide(activeIndex + 1), 5200);
+      };
+
+      const setPaused = (paused) => {
+        manuallyPaused = paused;
+        window.clearInterval(timer);
+        if (pauseButton) {
+          pauseButton.setAttribute('aria-pressed', String(paused));
+          pauseButton.setAttribute('aria-label', paused ? pauseButton.dataset.playLabel : pauseButton.dataset.pauseLabel);
+          const icon = pauseButton.querySelector('[data-pause-icon]');
+          if (icon) icon.textContent = paused ? '▶' : 'Ⅱ';
+        }
+        if (!paused) startSlider();
+      };
+
+      dots.forEach((dot, index) => {
+        dot.addEventListener('click', () => {
+          setActiveSlide(index);
+          startSlider();
+        });
+      });
+
+      pauseButton?.addEventListener('click', () => setPaused(!manuallyPaused));
+      slider.addEventListener('mouseenter', () => window.clearInterval(timer));
+      slider.addEventListener('mouseleave', startSlider);
+      slider.addEventListener('focusin', () => window.clearInterval(timer));
+      slider.addEventListener('focusout', (event) => {
+        if (!(event.relatedTarget instanceof Node) || !slider.contains(event.relatedTarget)) startSlider();
+      });
+      reduceMotion.addEventListener('change', () => setPaused(reduceMotion.matches));
+
+      startSlider();
+    }
+  </script>
+</Base>

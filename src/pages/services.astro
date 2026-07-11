@@ -1,0 +1,50 @@
+---
+import Base from "@/layouts/Base.astro";
+import AutomationFlowVisual from "@/components/AutomationFlowVisual.astro";
+import IntegrationStrip from "@/components/IntegrationStrip.astro";
+import i18n from "@/config/i18n.json";
+
+const urlLang = Astro.url.searchParams.get("lang");
+const lang = (urlLang === "en" ? "en" : "de") as "de" | "en";
+const t = i18n[lang];
+---
+
+<Base
+  title={t.services.title}
+  meta_title={lang === "en" ? "AI Automation Services in Vienna | enta.at" : "AI-Automatisierung Leistungen in Wien | enta.at"}
+  description={t.services.subtitle}
+>
+  <section class="section border-b border-slate-200 bg-[linear-gradient(180deg,#F7F6F4_0%,#FFFFFF_82%)] pt-20">
+    <div class="container">
+      <div class="grid items-center gap-12 lg:grid-cols-[0.85fr_1.15fr]">
+        <div>
+          <span data-i18n="services.title" class="text-primary text-sm font-semibold uppercase tracking-[0.32em] mb-4 inline-block">
+            {t.services.title}
+          </span>
+          <h1 data-i18n="services.title" class="text-4xl font-bold mb-6 leading-tight md:text-5xl">{t.services.title}</h1>
+          <p data-i18n="services.subtitle" class="text-lg leading-8 text-text-dark/80">{t.services.subtitle}</p>
+          <div class="mt-8">
+            <IntegrationStrip compact={true} />
+          </div>
+        </div>
+        <div class="rounded-2xl border border-slate-200 bg-white p-4 shadow-[0_24px_70px_rgba(15,23,42,0.07)]">
+          <AutomationFlowVisual compact={true} />
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="section bg-white py-14">
+    <div class="container">
+      <div class="row gy-6">
+        {t.services.cards.map((card: any, index: number) => (
+          <div class="md:col-4">
+            <article class="h-full rounded-2xl border border-slate-200 bg-white p-7 transition hover:-translate-y-1 hover:shadow-[0_20px_50px_rgba(15,23,42,.07)]">
+              <h2 data-i18n={`services.cards.${index}.title`} class="text-2xl font-semibold mb-4">{card.title}</h2>
+              <p data-i18n={`services.cards.${index}.description`} class="text-text-dark/80">{card.description}</p>
+            </article>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+</Base>

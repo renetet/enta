@@ -1,0 +1,500 @@
+{
+  "languages": {
+    "de": "Deutsch",
+    "en": "English"
+  },
+  "de": {
+    "meta": {
+      "title": "AI Automatisierungen | Effiziente Workflow-Automatisierung",
+      "description": "AI-Automatisierung für Unternehmen mit Fokus auf EU-gehostete LLMs, n8n und datenschutzbewusste Workflows."
+    },
+    "site": {
+      "banner": "ENTA befindet sich im Aufbau. Erste Automatisierungsprojekte können bereits besprochen werden."
+    },
+    "nav": {
+      "home": "Start",
+      "automation": "Automatisierung",
+      "services": "Dienstleistungen",
+      "pricing": "Preise",
+      "portfolio": "Portfolio",
+      "impressum": "Impressum",
+      "resources": "Ressourcen",
+      "contact": "Kontakt",
+      "privacy": "Datenschutz"
+    },
+    "footer": {
+      "copyright": "Alle Rechte vorbehalten © 2026 enta.at | AI Automatisierung"
+    },
+    "home": {
+      "hero": {
+        "title": "AI Workflows, die dein Team wirklich entlasten",
+        "subtitle": "Ich baue schlanke Automatisierungen für Leads, Support, Reporting und interne Abläufe mit n8n, Paperclip und bevorzugt EU-gehosteten LLM-Modellen über Cortecs, Eden AI oder vergleichbare EU-Gateways.",
+        "cta": "Kostenlose Beratung"
+      },
+      "proof": [
+        "Cortecs/Eden AI + EU LLMs",
+        "Setup in 7-14 Tagen",
+        "Datenschutzbewusste Tool-Auswahl"
+      ],
+      "slider": {
+        "slides": [
+          {
+            "kicker": "Analyse",
+            "title": "Prozesse sichtbar"
+          },
+          {
+            "kicker": "Workflow",
+            "title": "Nodes verbunden"
+          },
+          {
+            "kicker": "Betrieb",
+            "title": "Automationen im Blick"
+          }
+        ],
+        "panel": {
+          "kicker": "Live Automation",
+          "title": "Planung, Aufbau und Betrieb"
+        },
+        "stats": ["pro Woche frei", "Tasks geroutet", "Uptime-Ziel"]
+      },
+      "use_cases": {
+        "title": "Automatisierungen, die sofort Wert schaffen",
+        "items": [
+          {
+            "title": "Lead-Qualifizierung",
+            "description": "Eingehende Anfragen prüfen, priorisieren und direkt an CRM oder Sales weitergeben."
+          },
+          {
+            "title": "Support-Triage",
+            "description": "Tickets klassifizieren, Antworten vorbereiten und wiederkehrende Fragen automatisieren."
+          },
+          {
+            "title": "Dokumente & Rechnungen",
+            "description": "PDFs auslesen, Daten validieren und Follow-ups ohne manuelle Copy-Paste-Arbeit starten."
+          },
+          {
+            "title": "Reporting",
+            "description": "Daten aus Tools sammeln, verdichten und als tägliche oder wöchentliche Updates versenden."
+          }
+        ]
+      },
+      "services": {
+        "title": "Meine Leistungen",
+        "items": [
+          {
+            "title": "AI Setup & Integration",
+            "description": "Ich verbinde deine Tools und richte professionelle AI-Workflows mit bevorzugt EU-gehosteten Modellen sowie Cortecs oder Eden AI als europäischen LLM-Gateway-Optionen ein."
+          },
+          {
+            "title": "Individuelle Workflows",
+            "description": "Automatisiere Marketing, Vertrieb, Buchhaltung und Kundenservice effizient mit n8n, Paperclip und AI-Unterstützung."
+          },
+          {
+            "title": "Monitoring & Support",
+            "description": "Zuverlässiger Support, Wartung und Optimierung deiner Automatisierungen."
+          }
+        ]
+      },
+      "benefits": {
+        "title": "Darum AI",
+        "items": [
+          "Flexible Automatisierung ohne Code",
+          "Skalierbar für kleine und große Unternehmen",
+          "Mehr Zeit für strategische Aufgaben"
+        ]
+      },
+      "how_it_works": {
+        "title": "So funktioniert es",
+        "steps": [
+          {
+            "title": "Analyse",
+            "description": "Wir identifizieren manuelle Prozesse und zeigen Automatisierungschancen auf."
+          },
+          {
+            "title": "Setup",
+            "description": "Wir verbinden Ihre Tools und erstellen skalierbare n8n-Workflows mit bevorzugt EU-gehosteten Services."
+          },
+          {
+            "title": "Launch",
+            "description": "Wir testen, optimieren und begleiten den produktiven Einsatz."
+          }
+        ]
+      }
+    },
+    "automation": {
+      "title": "Automatisierung in Wien",
+      "banner": "Diese Seite ist vorübergehend in Vorbereitung – danke für deinen Besuch.",
+      "headline": "Dein Partner für AI Automatisierung",
+      "paragraph": "Ich unterstütze Unternehmen und Agenturen dabei, interne Abläufe mit AI, n8n und Paperclip zuverlässig zu automatisieren. Wo möglich werden LLM-Modelle sowie n8n- und Paperclip-Setups in der EU gehostet oder selbst betrieben; für LLM-Routing werden europäische Gateway-Optionen wie Cortecs aus Wien oder Eden AI aus Frankreich bevorzugt.",
+      "points": [
+        "Analyse bestehender Workflows",
+        "Cortecs, Eden AI und EU-gehostete LLMs bevorzugt",
+        "n8n- und Paperclip-Setups mit EU-Fokus"
+      ],
+      "cta": "Projekt besprechen"
+    },
+    "services": {
+      "title": "Unsere AI-Dienstleistungen",
+      "subtitle": "Komplette Automatisierungsservices mit EU-fokussierter Tool- und Modell-Auswahl.",
+      "cards": [
+        {
+          "title": "Prozessanalyse",
+          "description": "Detaillierte Prüfung Ihrer Abläufe und Identifikation der besten Automatisierungsmöglichkeiten."
+        },
+        {
+          "title": "Systemintegration",
+          "description": "Verknüpfung Ihrer Tools, AI-Anbindung und zuverlässige Workflow-Automatisierung mit bevorzugt EU-gehosteten Services."
+        },
+        {
+          "title": "Wartung & Support",
+          "description": "Kontinuierliche Betreuung, Monitoring und Optimierung Ihrer Automatisierungen."
+        }
+      ]
+    },
+    "pricing": {
+      "title": "Beispielpreise",
+      "subtitle": "Transparente Pakete für AI- und Workflow-Automatisierung.",
+      "cards": [
+        {
+          "name": "Starter Paket",
+          "description": "Kleine Automatisierungen, erste n8n-, Paperclip- oder AI-Workflows und Setup-Unterstützung.",
+          "price": "ab 900 €"
+        },
+        {
+          "name": "Business Paket",
+          "description": "Mehrstufige Automatisierungen, Tool-Integration, EU-fokussierte Modell-Auswahl und Monitoring.",
+          "price": "ab 1.900 €"
+        },
+        {
+          "name": "Skalierungs Paket",
+          "description": "Komplexe Prozesse, maßgeschneiderte AI-Lösungen und laufende Betreuung.",
+          "price": "ab 3.500 €"
+        }
+      ]
+    },
+    "portfolio": {
+      "title": "Beispiele automatisierter Projekte",
+      "subtitle": "Einige meiner erfolgreich umgesetzten Automatisierungen.",
+      "items": [
+        {
+          "title": "Lead-Qualifizierung",
+          "description": "Automatische Filterung und Segmentierung eingehender Leads mit AI-Checks."
+        },
+        {
+          "title": "Rechnungsprozess",
+          "description": "Automatischer Rechnungsexport, Versand und Follow-up für wiederkehrende Kunden."
+        },
+        {
+          "title": "Social Media Publishing",
+          "description": "Planung, Veröffentlichung und Reporting über mehrere Kanäle."
+        }
+      ]
+    },
+    "impressum": {
+      "title": "Impressum",
+      "subtitle": "Rechtliche Angaben zum Betreiber dieser Website.",
+      "paragraphs": [
+        "Unternehmensname: ENTA AI Automation",
+        "Adresse: Wien, Österreich",
+        "E-Mail: info(at)enta.at",
+        "Haftungsausschluss: Trotz sorgfältiger Prüfung kann keine Haftung für die Inhalte übernommen werden."
+      ]
+    },
+    "contact": {
+      "title": "Kontakt",
+      "subtitle": "Bereit zur Automatisierung? Schreiben Sie mir oder vereinbaren Sie einen Termin.",
+      "fields": {
+        "name": "Name",
+        "email": "E-Mail",
+        "subject": "Betreff",
+        "message": "Nachricht",
+        "button": "Nachricht senden"
+      }
+    },
+    "thank_you": {
+      "title": "Danke für Ihre Nachricht",
+      "subtitle": "Ihre Anfrage wurde erfolgreich gesendet.",
+      "description": "Ich melde mich so bald wie möglich bei Ihnen. In der Zwischenzeit können Sie zur Startseite zurückkehren oder sich weitere Automatisierungsbeispiele ansehen.",
+      "home_cta": "Zur Startseite",
+      "automation_cta": "Automatisierung ansehen"
+    },
+    "privacy": {
+      "title": "Datenschutz",
+      "paragraphs": [
+        "Ich verwende nur die nötigsten Daten, um dir schnell und sicher bei AI-, n8n- und Paperclip-Projekten zu helfen.",
+        "Deine E-Mail-Adresse wird ausschließlich für die Kommunikation mit dir verwendet.",
+        "Für AI-Automatisierungen werden bevorzugt EU-gehostete LLMs, europäische LLM-Gateways wie Cortecs oder Eden AI sowie EU-gehostete oder selbst betriebene n8n-/Paperclip-Setups eingesetzt. Externe Routing-Dienste werden nur nach Prüfung der Datenschutzanforderungen verwendet."
+      ]
+    },
+    "resources": {
+      "title": "Kostenlose Ressourcen",
+      "subtitle": "GitHub-Repositories mit freien n8n-Workflows und AI-Automatisierungsbeispielen.",
+      "description": "Sichere dir kostenlose Vorlagen, lerne von Open-Source-Workflows und beschleunige deine Automatisierungsprojekte.",
+      "cta": "Zum Repository",
+      "cards": [
+        {
+          "title": "n8n Workflow Sammlung",
+          "description": "Praktische Open-Source-Workflows für CRM, E-Mail und Datenautomatisierung.",
+          "href": "https://github.com/enescingoz/awesome-n8n-templates"
+        },
+        {
+          "title": "Paperclip Automatisierung",
+          "description": "Kostenlose Beispiele für AI-getriebene Automatisierung außerhalb von n8n.",
+          "href": "https://www.hostinger.com/tutorials/paperclip-ai-use-cases"
+        },
+        {
+          "title": "AI Automation Starter",
+          "description": "Starter-Repositories für schnelle Automatisierungsprojekte und Integrationen.",
+          "href": "https://github.com/renetet/ai-automation-starter"
+        }
+      ]
+    }
+  },
+  "en": {
+    "meta": {
+      "title": "AI Automations | Smart Workflow Automation",
+      "description": "AI automation for businesses with a focus on EU-hosted LLMs, n8n and privacy-conscious workflows."
+    },
+    "nav": {
+      "home": "Home",
+      "automation": "Automation",
+      "services": "Services",
+      "pricing": "Pricing",
+      "portfolio": "Portfolio",
+      "impressum": "Imprint",
+      "resources": "Resources",
+      "contact": "Contact",
+      "privacy": "Privacy"
+    },
+    "footer": {
+      "copyright": "Copyright © 2026 enta.at | AI Automation"
+    },
+    "home": {
+      "hero": {
+        "title": "AI workflows that actually lighten the load",
+        "subtitle": "I build lean automations for leads, support, reporting and internal operations using n8n, Paperclip and preferably EU-hosted LLM models via Cortecs, Eden AI or comparable EU gateways.",
+        "cta": "Book a free consult"
+      },
+      "proof": [
+        "Cortecs/Eden AI + EU LLMs",
+        "Setup in 7-14 days",
+        "Privacy-conscious tool choices"
+      ],
+      "slider": {
+        "slides": [
+          {
+            "kicker": "Discovery",
+            "title": "Processes mapped"
+          },
+          {
+            "kicker": "Workflow",
+            "title": "Nodes connected"
+          },
+          {
+            "kicker": "Operations",
+            "title": "Automations monitored"
+          }
+        ],
+        "panel": {
+          "kicker": "Live automation",
+          "title": "Planning, build and monitoring"
+        },
+        "stats": ["saved weekly", "tasks routed", "uptime target"]
+      },
+      "use_cases": {
+        "title": "Automations that create value fast",
+        "items": [
+          {
+            "title": "Lead qualification",
+            "description": "Review, prioritize and route incoming requests directly to CRM or sales."
+          },
+          {
+            "title": "Support triage",
+            "description": "Classify tickets, draft replies and automate answers to recurring questions."
+          },
+          {
+            "title": "Documents & invoices",
+            "description": "Extract PDF data, validate fields and trigger follow-ups without copy-paste work."
+          },
+          {
+            "title": "Reporting",
+            "description": "Collect tool data, summarize it and send daily or weekly operational updates."
+          }
+        ]
+      },
+      "services": {
+        "title": "What I do",
+        "items": [
+          {
+            "title": "AI Setup & Integration",
+            "description": "I connect your tools and build professional AI workflows with a preference for EU-hosted models and Cortecs or Eden AI as European LLM gateway options."
+          },
+          {
+            "title": "Custom Workflows",
+            "description": "Automate marketing, sales, accounting and customer support processes with n8n, Paperclip and AI-driven workflows."
+          },
+          {
+            "title": "Monitoring & Support",
+            "description": "Reliable maintenance and optimization for your automation stack."
+          }
+        ]
+      },
+      "benefits": {
+        "title": "Why AI",
+        "items": [
+          "Flexible automation without code",
+          "Scalable for small and growing teams",
+          "More time for strategic work"
+        ]
+      },
+      "how_it_works": {
+        "title": "How it works",
+        "steps": [
+          {
+            "title": "Discovery",
+            "description": "We analyse your manual processes and identify automation opportunities."
+          },
+          {
+            "title": "Implementation",
+            "description": "We connect your tools and build scalable AI workflows with a preference for EU-hosted services."
+          },
+          {
+            "title": "Go Live",
+            "description": "We test, optimize and support your automation in production."
+          }
+        ]
+      }
+    },
+    "automation": {
+      "title": "Automation in Vienna",
+      "banner": "This page is temporarily under preparation — thank you for visiting.",
+      "headline": "Your partner for AI automation",
+      "paragraph": "I help businesses and agencies automate operations with AI, n8n and Paperclip. Where possible, LLM models as well as n8n and Paperclip deployments are hosted or self-hosted in the EU; for LLM routing, European gateway options such as Vienna-based Cortecs or France-based Eden AI are preferred.",
+      "points": [
+        "Workflow analysis",
+        "Cortecs, Eden AI and EU-hosted LLMs preferred",
+        "n8n and Paperclip with an EU focus"
+      ],
+      "cta": "Discuss your project"
+    },
+    "site": {
+      "banner": "ENTA is currently being built. Early automation projects can already be discussed."
+    },
+    "services": {
+      "title": "Our AI services",
+      "subtitle": "Complete automation services with EU-focused tool and model choices.",
+      "cards": [
+        {
+          "title": "Process analysis",
+          "description": "Detailed review of your workflows and identification of the best automation opportunities."
+        },
+        {
+          "title": "System integration",
+          "description": "Connecting your tools, AI integration and reliable workflow automation with a preference for EU-hosted services."
+        },
+        {
+          "title": "Maintenance & support",
+          "description": "Ongoing support, monitoring and optimization of your automations."
+        }
+      ]
+    },
+    "pricing": {
+      "title": "Pricing examples",
+      "subtitle": "Transparent packages for AI and workflow automation.",
+      "cards": [
+        {
+          "name": "Starter package",
+          "description": "Small automations, initial n8n, Paperclip or AI workflows and setup support.",
+          "price": "from €900"
+        },
+        {
+          "name": "Business package",
+          "description": "Multi-step automations, tool integration, EU-focused model choices and monitoring.",
+          "price": "from €1,900"
+        },
+        {
+          "name": "Scale package",
+          "description": "Complex processes, custom AI solutions and ongoing support.",
+          "price": "from €3,500"
+        }
+      ]
+    },
+    "portfolio": {
+      "title": "Automation portfolio",
+      "subtitle": "Examples of successfully delivered automation projects.",
+      "items": [
+        {
+          "title": "Lead qualification",
+          "description": "Automatic filtering and segmentation of incoming leads with AI checks."
+        },
+        {
+          "title": "Invoice workflow",
+          "description": "Automated invoice export, delivery and follow-up for recurring customers."
+        },
+        {
+          "title": "Social media publishing",
+          "description": "Scheduling, publishing and reporting across multiple channels."
+        }
+      ]
+    },
+    "impressum": {
+      "title": "Imprint",
+      "subtitle": "Legal information about the operator of this website.",
+      "paragraphs": [
+        "Company name: ENTA AI Automation",
+        "Address: Vienna, Austria",
+        "Email: info(at)enta.at",
+        "Disclaimer: Despite careful review, no liability can be assumed for the content."
+      ]
+    },
+    "contact": {
+      "title": "Contact",
+      "subtitle": "Ready for automation? Send a message or schedule a meeting.",
+      "fields": {
+        "name": "Name",
+        "email": "Email",
+        "subject": "Subject",
+        "message": "Message",
+        "button": "Send message"
+      }
+    },
+    "thank_you": {
+      "title": "Thank you for your message",
+      "subtitle": "Your request was sent successfully.",
+      "description": "I will get back to you as soon as possible. In the meantime, you can return to the homepage or explore more automation examples.",
+      "home_cta": "Back to home",
+      "automation_cta": "View automation"
+    },
+    "privacy": {
+      "title": "Privacy Policy",
+      "paragraphs": [
+        "I only use the data needed to support your AI, n8n and Paperclip automation projects.",
+        "Your email is used only to respond and coordinate next steps.",
+        "AI automations preferably use EU-hosted LLMs, European LLM gateways such as Cortecs or Eden AI, and EU-hosted or self-hosted n8n/Paperclip deployments. External routing providers are used only after reviewing privacy requirements."
+      ]
+    },
+    "resources": {
+      "title": "Free resources",
+      "subtitle": "GitHub repos with free n8n workflows and AI automation examples.",
+      "description": "Find ready-to-use templates, customize workflows, and accelerate your automation projects.",
+      "cta": "View repo",
+      "cards": [
+        {
+          "title": "n8n Workflow Collection",
+          "description": "Open-source workflows for CRM, email and data automation.",
+          "href": "https://github.com/enescingoz/awesome-n8n-templates"
+        },
+        {
+          "title": "Paperclip Automation",
+          "description": "Free examples for AI-powered automation beyond n8n.",
+          "href": "https://www.hostinger.com/tutorials/paperclip-ai-use-cases"
+        },
+        {
+          "title": "AI Automation Starter",
+          "description": "Starter repositories for quick automation projects and integrations.",
+          "href": "https://github.com/renetet/ai-automation-starter"
+        }
+      ]
+    }
+  }
+}

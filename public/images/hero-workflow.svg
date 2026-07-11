@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1600" height="960" viewBox="0 0 1600 960" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="glow" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#E6FFFA"/>
+      <stop offset="100%" stop-color="#FFFFFF"/>
+    </linearGradient>
+    <filter id="shadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="18" stdDeviation="22" flood-color="#0F172A" flood-opacity="0.08"/>
+    </filter>
+  </defs>
+
+  <rect width="1600" height="960" fill="transparent" />
+  <circle cx="1220" cy="200" r="180" fill="url(#glowGradient)" opacity="0.12" />
+  <circle cx="360" cy="730" r="170" fill="#0EA5E9" opacity="0.08" />
+
+  <g filter="url(#shadow)">
+    <rect x="60" y="60" width="220" height="220" rx="40" fill="#fff" stroke="#E6EEF3" />
+    <g transform="translate(110,110)">
+      <circle cx="0" cy="0" r="28" fill="#fff" stroke="#111827" stroke-width="2" />
+      <path d="M-12 -6 C-6 -12 6 -12 12 -6" stroke="#111827" stroke-width="2" fill="none" stroke-linecap="round" />
+      <path d="M-6 6 C0 12 6 12 12 6" stroke="#111827" stroke-width="2" fill="none" stroke-linecap="round" />
+    </g>
+    <text x="86" y="210" font-family="Inter, sans-serif" font-size="20" font-weight="700" fill="#0F172A">Webhook</text>
+    <text x="150" y="140" font-family="Inter, sans-serif" font-size="14" fill="#475569">GET</text>
+  </g>
+
+  <!-- Arrow from Webhook to No Operation (top) -->
+  <path d="M280 160 C380 140 520 120 700 240" stroke="#9CA3AF" stroke-width="8" fill="none" stroke-linecap="round" opacity="0.7"/>
+  <polygon points="700,237 692,248 708,248" fill="#9CA3AF" opacity="0.7"/>
+  <text x="520" y="120" font-family="Inter, sans-serif" font-size="14" fill="#6B7280">1 item</text>
+
+  <!-- Bottom-left nodes -->
+  <g filter="url(#shadow)">
+    <rect x="60" y="480" width="260" height="160" rx="40" fill="#fff" stroke="#E6EEF3" />
+    <text x="92" y="540" font-family="Inter, sans-serif" font-size="18" font-weight="600" fill="#0F172A">When fetching a dataset row</text>
+  </g>
+
+  <g filter="url(#shadow)">
+    <rect x="360" y="500" width="220" height="140" rx="28" fill="#fff" stroke="#E6EEF3" />
+    <text x="392" y="560" font-family="Inter, sans-serif" font-size="18" font-weight="600" fill="#0F172A">Match webhook format</text>
+  </g>
+
+  <!-- Arrows from bottom-left to No Operation converge -->
+  <path d="M200 540 C380 520 540 500 700 250" stroke="#9CA3AF" stroke-width="8" fill="none" stroke-linecap="round" opacity="0.7"/>
+  <path d="M480 560 C560 540 640 520 700 250" stroke="#9CA3AF" stroke-width="8" fill="none" stroke-linecap="round" opacity="0.7"/>
+
+  <!-- No Operation node (center-left) -->
+  <g filter="url(#shadow)">
+    <rect x="660" y="200" width="160" height="160" rx="24" fill="#fff" stroke="#E6EEF3" />
+    <path d="M706 260 L746 260" stroke="#111827" stroke-width="12" stroke-linecap="round" opacity="0.12" />
+    <text x="684" y="336" font-family="Inter, sans-serif" font-size="16" fill="#475569">No Operation</text>
+  </g>
+
+  <!-- Arrow from No Operation to AI Agent -->
+  <path d="M820 280 L920 280" stroke="#9CA3AF" stroke-width="10" stroke-linecap="round" opacity="0.75"/>
+  <polygon points="920,276 914,288 926,288" fill="#9CA3AF" opacity="0.75"/>
+
+  <!-- AI Agent (large centered box) -->
+  <g filter="url(#shadow)">
+    <rect x="920" y="160" width="420" height="380" rx="16" fill="#fff" stroke="#E6EEF3" />
+    <text x="1006" y="208" font-family="Inter, sans-serif" font-size="24" font-weight="800" fill="#0F172A">AI Agent</text>
+    <!-- internal components -->
+    <g transform="translate(980,240)">
+      <rect x="0" y="0" width="220" height="120" rx="12" fill="#F8FAFF" stroke="#E2E8F0" />
+      <text x="12" y="28" font-family="Inter, sans-serif" font-size="14" fill="#374151">Tools Agent</text>
+      <circle cx="36" cy="72" r="18" fill="#0EA5E9" />
+      <circle cx="108" cy="72" r="18" fill="#7C3AED" />
+      <circle cx="180" cy="72" r="18" fill="#14B8A6" />
+    </g>
+    <text x="984" y="356" font-family="Inter, sans-serif" font-size="16" fill="#475569">OpenAI Chat Model</text>
+    <text x="1208" y="356" font-family="Inter, sans-serif" font-size="16" fill="#475569">Structured Output Parser</text>
+  </g>
+
+  <!-- Arrow from AI Agent to Set outputs (right) -->
+  <path d="M1340 260 L1400 260" stroke="#9CA3AF" stroke-width="10" stroke-linecap="round" opacity="0.75"/>
+  <polygon points="1400,256 1394,268 1406,268" fill="#9CA3AF" opacity="0.75"/>
+
+  <!-- Set outputs node (far right) -->
+  <g filter="url(#shadow)">
+    <rect x="1460" y="240" width="120" height="120" rx="20" fill="#fff" stroke="#E6EEF3" />
+    <path d="M1496 288 L1516 308 L1556 268" stroke="#94A3B8" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" fill="none" opacity="0.4"/>
+    <text x="1472" y="320" font-family="Inter, sans-serif" font-size="18" font-weight="700" fill="#0F172A">Set outputs</text>
+  </g>
+
+</svg>
+
+  <rect width="1600" height="960" fill="transparent" />
+  <circle cx="1220" cy="200" r="180" fill="url(#glowGradient)" opacity="0.12" />
+  <circle cx="360" cy="730" r="170" fill="#0EA5E9" opacity="0.08" />
+
+  <g filter="url(#softShadow)">
+    <rect x="170" y="170" width="320" height="220" rx="38" fill="url(#cardGradient)" stroke="#CBD5E1" stroke-width="1.8" />
+    <rect x="194" y="196" width="96" height="72" rx="22" fill="#EEF2FF" />
+    <path d="M238 222C238 214 244 208 252 208H302C310 208 316 214 316 222V252C316 260 310 266 302 266H252C244 266 238 260 238 252V222Z" fill="#7C3AED"/>
+    <path d="M240 227L264 241L240 255V227Z" fill="#fff"/>
+    <path d="M320 236H340" stroke="#94A3B8" stroke-width="4" stroke-linecap="round" />
+    <path d="M320 250H340" stroke="#94A3B8" stroke-width="4" stroke-linecap="round" />
+    <path d="M194 292H466" stroke="#E2E8F0" stroke-width="4" stroke-linecap="round" />
+    <path d="M194 330H414" stroke="#E2E8F0" stroke-width="4" stroke-linecap="round" />
+  </g>
+  <text x="210" y="270" font-family="Inter, sans-serif" font-size="36" font-weight="700" fill="#0F172A">Webhook</text>
+  <text x="210" y="314" font-family="Inter, sans-serif" font-size="16" fill="#475569">GET</text>
+
+  <g filter="url(#softShadow)">
+    <rect x="170" y="520" width="320" height="216" rx="34" fill="url(#cardGradient)" stroke="#CBD5E1" stroke-width="1.8" />
+    <path d="M200 580H454" stroke="#E2E8F0" stroke-width="4" stroke-linecap="round" />
+    <path d="M200 620H420" stroke="#E2E8F0" stroke-width="4" stroke-linecap="round" />
+  </g>
+  <text x="200" y="580" font-family="Inter, sans-serif" font-size="22" font-weight="600" fill="#0F172A">When fetching a dataset row</text>
+
+  <g filter="url(#softShadow)">
+    <rect x="520" y="560" width="260" height="176" rx="32" fill="url(#cardGradient)" stroke="#CBD5E1" stroke-width="1.8" />
+    <path d="M550 620H720" stroke="#E2E8F0" stroke-width="4" stroke-linecap="round" />
+    <path d="M550 660H700" stroke="#E2E8F0" stroke-width="4" stroke-linecap="round" />
+  </g>
+  <text x="550" y="620" font-family="Inter, sans-serif" font-size="22" font-weight="600" fill="#0F172A">Match webhook format</text>
+
+  <g filter="url(#softShadow)">
+    <rect x="740" y="190" width="280" height="180" rx="28" fill="url(#cardGradient)" stroke="#CBD5E1" stroke-width="1.8" />
+    <path d="M780 220H950" stroke="#E2E8F0" stroke-width="4" stroke-linecap="round" />
+    <path d="M780 260H900" stroke="#E2E8F0" stroke-width="4" stroke-linecap="round" />
+  </g>
+  <text x="780" y="240" font-family="Inter, sans-serif" font-size="22" font-weight="700" fill="#0F172A">No Operation</text>
+
+  <g filter="url(#softShadow)">
+    <rect x="1080" y="260" width="370" height="260" rx="32" fill="url(#cardGradient)" stroke="#CBD5E1" stroke-width="1.8" />
+    <rect x="1108" y="316" width="204" height="64" rx="20" fill="#EFF6FF" />
+    <path d="M1160 344H1240" stroke="#2563EB" stroke-width="4" stroke-linecap="round" />
+    <rect x="1150" y="404" width="72" height="72" rx="20" fill="#DBEAFE" />
+    <rect x="1244" y="404" width="72" height="72" rx="20" fill="#D8FEF8" />
+    <rect x="1338" y="404" width="72" height="72" rx="20" fill="#E0F2FE" />
+  </g>
+  <text x="1134" y="304" font-family="Inter, sans-serif" font-size="24" font-weight="700" fill="#0F172A">AI Agent</text>
+  <text x="1160" y="382" font-family="Inter, sans-serif" font-size="18" fill="#334155">OpenAI Chat Model</text>
+  <text x="1160" y="432" font-family="Inter, sans-serif" font-size="18" fill="#334155">Structured Output Parser</text>
+
+  <g filter="url(#softShadow)">
+    <rect x="1460" y="280" width="220" height="180" rx="30" fill="url(#cardGradient)" stroke="#CBD5E1" stroke-width="1.8" />
+    <path d="M1488 340H1620" stroke="#E2E8F0" stroke-width="4" stroke-linecap="round" />
+  </g>
+  <text x="1510" y="340" font-family="Inter, sans-serif" font-size="24" font-weight="700" fill="#0F172A">Set outputs</text>
+
+  <path d="M320 270L430 270" stroke="#0F172A" stroke-opacity="0.2" stroke-width="18" stroke-linecap="round" />
+  <path d="M620 580L740 580" stroke="#0F172A" stroke-opacity="0.22" stroke-width="18" stroke-linecap="round" />
+  <path d="M860 280L1080 280" stroke="#0F172A" stroke-opacity="0.22" stroke-width="18" stroke-linecap="round" />
+  <path d="M1450 340L1460 340" stroke="#0F172A" stroke-opacity="0.25" stroke-width="12" stroke-linecap="round" />
+
+  <polygon points="430,266 420,276 430,286" fill="#0F172A" opacity="0.6"/>
+  <polygon points="740,576 730,586 740,596" fill="#0F172A" opacity="0.6"/>
+  <polygon points="1080,276 1070,286 1080,296" fill="#0F172A" opacity="0.6"/>
+</svg>

@@ -1,0 +1,23 @@
+---
+import Base from "@/layouts/Base.astro";
+import i18n from "@/config/i18n.json";
+
+const lang = Astro.url.searchParams.get("lang") ?? "de";
+const t = i18n[lang] || i18n.de;
+---
+
+<Base title={t.privacy.title} description={t.privacy.paragraphs[0]}>
+  <section class="section pt-24">
+    <div class="container">
+      <div class="max-w-3xl mx-auto text-center">
+        <span data-i18n="privacy.title" class="text-primary text-sm font-semibold uppercase tracking-[0.4em] mb-4 inline-block">
+          {t.privacy.title}
+        </span>
+        <h1 data-i18n="privacy.title" class="text-4xl font-bold mb-6">{t.privacy.title}</h1>
+        {t.privacy.paragraphs.map((paragraph: string, index: number) => (
+          <p data-i18n={`privacy.paragraphs.${index}`} class="text-lg text-text-dark/80 mb-6">{paragraph}</p>
+        ))}
+      </div>
+    </div>
+  </section>
+</Base>

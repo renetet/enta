@@ -1,0 +1,214 @@
+---
+import Logo from "@/components/Logo.astro";
+import menu from "@/config/menu.json";
+import i18n from "@/config/i18n.json";
+
+export interface ChildNavigationLink {
+  key?: string;
+  name?: string;
+  url: string;
+}
+
+export interface NavigationLink {
+  key?: string;
+  name?: string;
+  url: string;
+  hasChildren?: boolean;
+  children?: ChildNavigationLink[];
+}
+
+type LangCode = "de" | "en";
+const { main }: { main: NavigationLink[] } = menu;
+const urlLang = Astro.url.searchParams.get("lang");
+
+type LocalNavigationLink = NavigationLink | ChildNavigationLink;
+
+function navLabel(item: LocalNavigationLink) {
+  const key = item.key as keyof typeof t.nav;
+  return key ? t.nav[key] : item.name;
+}
+
+const routeMap: Record<string, Record<string, string>> = {
+  "/": { de: "/", en: "/" },
+  "/automation": { de: "/automation", en: "/automation" },
+  "/kontakt": { de: "/kontakt", en: "/contact" },
+  "/contact": { de: "/kontakt", en: "/contact" },
+  "/privacy-policy": { de: "/privacy-policy", en: "/privacy-policy" },
+  "/ressourcen": { de: "/ressourcen", en: "/free-resources" },
+  "/free-resources": { de: "/ressourcen", en: "/free-resources" },
+  "/usluge": { de: "/services", en: "/services" },
+  "/services": { de: "/services", en: "/services" },
+};
+
+function normalizePath(path: string) {
+  const raw = path.split("?")[0].trim();
+  const trimmed = raw.replace(/\/+$|^\s+|\s+$/g, "");
+  if (trimmed === "" || trimmed === "/") return "/";
+  return trimmed.startsWith("/") ? trimmed : `/${trimmed}`;
+}
+
+function localizedPath(path: string, code: string) {
+  return routeMap[normalizePath(path)]?.[code] ?? normalizePath(path);
+}
+
+function detectLangByPath(path: string) {
+  const normalized = normalizePath(path);
+  if (normalized === "/contact" || normalized === "/free-resources") return "en";
+  if (normalized === "/kontakt" || normalized === "/ressourcen") return "de";
+  return "de";
+}
+
+const currentLang = (urlLang === "en" ? "en" : urlLang === "de" ? "de" : detectLangByPath(Astro.url.pathname)) as LangCode;
+const t = i18n[currentLang];
+const visibleMain = main;
+const contactHref = currentLang === "en" ? "/contact?lang=en" : "/kontakt?lang=de";
+
+function buildLangUrl(url: string, code: LangCode) {
+  if (!url) return "#";
+  const [rawPath, rawQuery] = url.split("?");
+  const path = normalizePath(rawPath);
+  const target = localizedPath(path, code);
+  const params = new URLSearchParams(rawQuery || "");
+  params.set("lang", code);
+  return `${target}?${params.toString()}`;
+}
+
+function hrefWithLang(url: string) {
+  return buildLangUrl(url, currentLang);
+}
+---
+
+<header class="header sticky top-0 z-40 border-b border-slate-200/70 bg-white/85 py-3 backdrop-blur-xl">
+  <nav class="navbar container">
+    <div class="w-full flex items-center justify-between">
+      <Logo />
+      <div class="hidden items-center gap-4 xl:flex">
+        <ul class="navbar-nav flex items-center">
+          {
+            visibleMain.map((menuItem) => (
+              <li class="nav-item">
+                <a
+                  href={hrefWithLang(menuItem.url)}
+                  class="nav-link"
+                  data-i18n={menuItem.key ? `nav.${menuItem.key}` : undefined}
+                >
+                  {navLabel(menuItem)}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+        <div class="flex items-center gap-3 border-l border-slate-200 pl-5">
+          {Object.entries(i18n.languages).map(([code, label]) => (
+          <a
+            data-lang-switcher
+            href={buildLangUrl(Astro.url.pathname, code as LangCode)}
+            class={`text-xs font-bold uppercase tracking-[0.18em] transition ${code === currentLang ? "text-primary" : "text-dark/50 hover:text-dark"}`}
+            aria-current={code === currentLang ? "page" : undefined}
+          >
+            {code}
+          </a>
+        ))}
+          <a href={contactHref} class="btn btn-primary px-5 py-2 text-sm text-white" data-i18n="home.hero.cta">
+            {t.home.hero.cta}
+          </a>
+        </div>
+      </div>
+      <div class="flex items-center gap-4 xl:hidden">
+        <a href={contactHref} class="btn btn-primary hidden px-4 py-2 text-sm text-white sm:inline-flex" data-i18n="home.hero.cta">
+          {t.home.hero.cta}
+        </a>
+        <button
+          id="nav-toggle"
+          type="button"
+          class="flex cursor-pointer items-center rounded-lg border border-slate-200 p-2 text-black"
+          aria-expanded="false"
+          aria-controls="nav-menu"
+          aria-label={currentLang === "en" ? "Open navigation menu" : "Navigationsmenü öffnen"}
+          data-open-label={currentLang === "en" ? "Open navigation menu" : "Navigationsmenü öffnen"}
+          data-close-label={currentLang === "en" ? "Close navigation menu" : "Navigationsmenü schließen"}
+        >
+          <svg id="menu-open-icon" aria-hidden="true" class="h-6 fill-current" viewBox="0 0 20 20">
+            <path d="M0 3h20v2H0V3z m0 6h20v2H0V9z m0 6h20v2H0V0z"></path>
+          </svg>
+          <svg id="menu-close-icon" aria-hidden="true" class="hidden h-6 fill-current" viewBox="0 0 20 20">
+            <polygon
+              points="11 9 22 9 22 11 11 11 11 22 9 22 9 11 -2 11 -2 9 9 9 9 -2 11 -2"
+              transform="rotate(45 10 10)"></polygon>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <ul
+      id="nav-menu"
+      class="navbar-nav mt-4 hidden w-full rounded-xl border border-slate-200 bg-white p-3 shadow-lg xl:hidden"
+    >
+      {
+        visibleMain.map((menuItem) => (
+          <>
+            {menuItem.hasChildren ? (
+              <li class="nav-item nav-dropdown group relative cursor-pointer">
+                <span class="nav-link inline-flex items-center">
+                  {navLabel(menuItem)}
+                  <svg class="h-5 w-5 fill-current" viewBox="0 0 20 20">
+                    <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
+                  </svg>
+                </span>
+                <ul class="nav-dropdown-list hidden group-hover:block md:invisible md:absolute md:block md:opacity-0 md:group-hover:visible md:group-hover:opacity-100">
+                  {menuItem.children?.map((child) => (
+                    <li class="nav-dropdown-item">
+                      <a
+                        href={hrefWithLang(child.url)}
+                        class="nav-dropdown-link"
+                        data-i18n={child.key ? `nav.${child.key}` : undefined}
+                      >
+                        {navLabel(child)}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </li>
+            ) : (
+              <li class="nav-item">
+                <a
+                  href={hrefWithLang(menuItem.url)}
+                  class="nav-link block"
+                  data-i18n={menuItem.key ? `nav.${menuItem.key}` : undefined}
+                >
+                  {navLabel(menuItem)}
+                </a>
+              </li>
+            )}
+          </>
+        ))
+      }
+    </ul>
+  </nav>
+  <script type="module">
+    const navToggle = document.getElementById("nav-toggle");
+    const navMenu = document.getElementById("nav-menu");
+
+    if (navToggle && navMenu) {
+      const setMenuOpen = (open) => {
+        navMenu.classList.toggle("hidden", !open);
+        navToggle.setAttribute("aria-expanded", String(open));
+        navToggle.setAttribute("aria-label", open ? navToggle.dataset.closeLabel : navToggle.dataset.openLabel);
+        document.getElementById("menu-open-icon")?.classList.toggle("hidden", open);
+        document.getElementById("menu-close-icon")?.classList.toggle("hidden", !open);
+      };
+      navToggle.addEventListener("click", () => {
+        setMenuOpen(navToggle.getAttribute("aria-expanded") !== "true");
+      });
+      navMenu.addEventListener("click", (event) => {
+        if (event.target instanceof Element && event.target.closest("a")) setMenuOpen(false);
+      });
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape" && navToggle.getAttribute("aria-expanded") === "true") {
+          setMenuOpen(false);
+          navToggle.focus();
+        }
+      });
+    }
+  </script>
+</header>

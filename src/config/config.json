@@ -1,0 +1,35 @@
+{
+  "site": {
+    "title": "enta.at | AI Automation",
+    "base_url": "https://enta.at",
+    "base_path": "/",
+    "trailing_slash": false,
+    "favicon": "/images/favicon-aia.svg",
+    "logo": "/images/logo-aia.svg",
+    "logo_width": "219",
+    "logo_height": "51",
+    "logo_text": "enta.at"
+  },
+
+  "settings": {
+    "pagination": 5,
+    "summary_length": 100
+  },
+
+  "metadata": {
+    "meta_author": "enta.at",
+    "meta_image": "/images/og-image.png",
+    "meta_description": "enta.at bringt smarte AI-Automation nach Wien – Workflows verbinden, Zeit sparen und Prozesse digitalisieren."
+  },
+
+  "params": {
+    "contact_form_action": "#",
+    "web3forms_access_key": "a19a88c9-e3dd-4081-b9aa-0ece08f9c7cf",
+    "copyright": "Alle Rechte vorbehalten © 2026 ENTA | enta.at"
+  },
+
+  "contactinfo": {
+    "address": "Wien, Österreich",
+    "email": "info(at)enta.at"
+  }
+}

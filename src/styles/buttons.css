@@ -1,0 +1,11 @@
+.btn {
+  @apply inline-flex items-center justify-center rounded-xl border px-6 py-3 font-bold transition cursor-pointer;
+}
+
+.btn-primary {
+  @apply border-primary bg-primary text-white shadow-[0_12px_30px_rgba(200,16,46,0.2)] hover:-translate-y-0.5 hover:bg-[#a90d27] hover:text-white hover:shadow-[0_18px_38px_rgba(200,16,46,0.25)];
+}
+
+.btn-outline-primary {
+  @apply border-slate-300 bg-white text-dark hover:border-primary hover:bg-primary hover:text-white;
+}

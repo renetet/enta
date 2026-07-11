@@ -1,0 +1,67 @@
+---
+import Base from "@/layouts/Base.astro";
+import i18n from "@/config/i18n.json";
+
+const urlLang = Astro.url.searchParams.get("lang");
+const lang = (urlLang === "en" ? "en" : "de") as "de" | "en";
+const t = i18n[lang];
+const included =
+  lang === "en"
+    ? [
+        ["Workflow audit", "One automation", "Handover notes"],
+        ["Multi-step workflow", "Tool integration", "Monitoring setup"],
+        ["Custom AI logic", "Advanced integrations", "Ongoing optimization"],
+      ]
+    : [
+        ["Workflow-Audit", "Eine Automatisierung", "Übergabe-Dokumentation"],
+        ["Mehrstufiger Workflow", "Tool-Integration", "Monitoring-Setup"],
+        ["Individuelle AI-Logik", "Erweiterte Integrationen", "Laufende Optimierung"],
+      ];
+const popularLabel = lang === "en" ? "Recommended" : "Beliebt";
+const ctaLabel = lang === "en" ? "Discuss package" : "Paket besprechen";
+---
+
+<Base
+  title={t.pricing.title}
+  meta_title={lang === "en" ? "AI Automation Pricing & Packages | enta.at" : "AI-Automatisierung Preise & Pakete | enta.at"}
+  description={t.pricing.subtitle}
+>
+  <section class="section border-b border-slate-200 bg-[linear-gradient(180deg,#F7F6F4_0%,#FFFFFF_82%)] pt-20">
+    <div class="container">
+      <div class="mx-auto mb-12 max-w-3xl text-center">
+        <span data-i18n="pricing.title" class="text-primary text-sm font-semibold uppercase tracking-[0.4em] mb-4 inline-block">
+          {t.pricing.title}
+        </span>
+        <h1 data-i18n="pricing.title" class="text-4xl font-bold mb-6">{t.pricing.title}</h1>
+        <p data-i18n="pricing.subtitle" class="text-lg text-text-dark/80 max-w-3xl mx-auto">{t.pricing.subtitle}</p>
+      </div>
+      <div class="row gy-6">
+        {t.pricing.cards.map((card: any, index: number) => (
+          <div class="md:col-4">
+            <article class={`relative h-full rounded-2xl border bg-white p-7 transition hover:-translate-y-1 hover:shadow-[0_20px_50px_rgba(15,23,42,.07)] ${index === 1 ? "border-primary ring-4 ring-primary/5" : "border-slate-200"}`}>
+              {index === 1 && (
+                <span class="absolute right-5 top-5 rounded-full bg-primary/10 px-3 py-1 text-xs font-bold uppercase tracking-[0.16em] text-primary">
+                  {popularLabel}
+                </span>
+              )}
+              <h2 data-i18n={`pricing.cards.${index}.name`} class="mb-3 pr-24 text-2xl font-bold">{card.name}</h2>
+              <p data-i18n={`pricing.cards.${index}.description`} class="mb-6 min-h-[72px] text-text-dark/80">{card.description}</p>
+              <div class="mb-6 text-3xl font-bold text-slate-950">{card.price}</div>
+              <ul class="mb-7 space-y-3">
+                {included[index].map((item) => (
+                  <li class="flex items-center gap-3 text-sm font-semibold text-slate-700">
+                    <span class="h-2 w-2 rounded-full bg-primary"></span>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+              <a href={lang === "en" ? "/contact?lang=en" : "/kontakt?lang=de"} class={`btn w-full ${index === 1 ? "btn-primary text-white" : "btn-outline-primary"}`}>
+                {ctaLabel}
+              </a>
+            </article>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+</Base>

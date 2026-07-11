@@ -1,0 +1,64 @@
+---
+import Base from "@/layouts/Base.astro";
+import i18n from "@/config/i18n.json";
+
+const urlLang = Astro.url.searchParams.get("lang");
+const lang = (urlLang === "en" ? "en" : "de") as "de" | "en";
+const t = i18n[lang];
+const labels =
+  lang === "en"
+    ? { problem: "Problem", workflow: "Workflow", result: "Result" }
+    : { problem: "Problem", workflow: "Workflow", result: "Ergebnis" };
+const workflows =
+  lang === "en"
+    ? ["Form -> AI score -> CRM task", "PDF -> validation -> email follow-up", "Calendar -> publish -> report"]
+    : ["Formular -> AI-Score -> CRM-Aufgabe", "PDF -> Prüfung -> E-Mail-Follow-up", "Kalender -> Publishing -> Report"];
+const results =
+  lang === "en"
+    ? ["Faster response for high-intent leads", "Less manual invoice handling", "Consistent publishing rhythm"]
+    : ["Schnellere Reaktion auf starke Leads", "Weniger manuelle Rechnungsarbeit", "Konstanter Publishing-Rhythmus"];
+---
+
+<Base
+  title={t.portfolio.title}
+  meta_title={lang === "en" ? "AI Automation Projects & Examples | enta.at" : "AI-Automatisierung Projekte & Beispiele | enta.at"}
+  description={t.portfolio.subtitle}
+>
+  <section class="section border-b border-slate-200 bg-[linear-gradient(180deg,#F7F6F4_0%,#FFFFFF_82%)] pt-20">
+    <div class="container">
+      <div class="mx-auto mb-12 max-w-3xl text-center">
+        <span data-i18n="portfolio.title" class="text-primary text-sm font-semibold uppercase tracking-[0.4em] mb-4 inline-block">
+          {t.portfolio.title}
+        </span>
+        <h1 data-i18n="portfolio.title" class="text-4xl font-bold mb-6">{t.portfolio.title}</h1>
+        <p data-i18n="portfolio.subtitle" class="text-lg text-text-dark/80 max-w-3xl mx-auto">{t.portfolio.subtitle}</p>
+      </div>
+      <div class="row gy-6">
+        {t.portfolio.items.map((item: any, index: number) => (
+          <div class="md:col-4">
+            <article class="h-full rounded-2xl border border-slate-200 bg-white p-7 transition hover:-translate-y-1 hover:shadow-[0_20px_50px_rgba(15,23,42,.07)]">
+              <div class="mb-6 flex h-12 w-12 items-center justify-center rounded-lg bg-red-50 text-lg font-bold text-primary">
+                0{index + 1}
+              </div>
+              <h2 data-i18n={`portfolio.items.${index}.title`} class="mb-5 text-2xl font-bold">{item.title}</h2>
+              <div class="space-y-5">
+                <div>
+                  <p class="mb-1 text-xs font-bold uppercase tracking-[0.2em] text-primary">{labels.problem}</p>
+                  <p data-i18n={`portfolio.items.${index}.description`} class="text-text-dark/80">{item.description}</p>
+                </div>
+                <div>
+                  <p class="mb-1 text-xs font-bold uppercase tracking-[0.2em] text-primary">{labels.workflow}</p>
+                  <p class="font-semibold text-slate-800">{workflows[index]}</p>
+                </div>
+                <div>
+                  <p class="mb-1 text-xs font-bold uppercase tracking-[0.2em] text-primary">{labels.result}</p>
+                  <p class="font-semibold text-slate-800">{results[index]}</p>
+                </div>
+              </div>
+            </article>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+</Base>

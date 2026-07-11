@@ -1,0 +1,27 @@
+---
+import Base from "@/layouts/Base.astro";
+import i18n from "@/config/i18n.json";
+
+const urlLang = Astro.url.searchParams.get("lang");
+const lang = (urlLang === "en" ? "en" : "de") as "de" | "en";
+const t = i18n[lang];
+---
+
+<Base title={t.impressum.title} description={t.impressum.subtitle}>
+  <section class="section pt-24">
+    <div class="container">
+      <div class="text-center mb-12">
+        <span data-i18n="impressum.title" class="text-primary text-sm font-semibold uppercase tracking-[0.4em] mb-4 inline-block">
+          {t.impressum.title}
+        </span>
+        <h1 data-i18n="impressum.title" class="text-4xl font-bold mb-6">{t.impressum.title}</h1>
+        <p data-i18n="impressum.subtitle" class="text-lg text-text-dark/80 max-w-3xl mx-auto mb-10">{t.impressum.subtitle}</p>
+      </div>
+      <div class="mx-auto max-w-3xl rounded-[2rem] border border-slate-200 bg-white p-10">
+        {t.impressum.paragraphs.map((paragraph: string, index: number) => (
+          <p data-i18n={`impressum.paragraphs.${index}`} class="mb-4 text-text-dark/80">{paragraph}</p>
+        ))}
+      </div>
+    </div>
+  </section>
+</Base>

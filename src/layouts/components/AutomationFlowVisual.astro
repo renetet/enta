@@ -1,0 +1,35 @@
+---
+const { compact = false } = Astro.props;
+const steps = ["Lead", "AI", "CRM", "Report"];
+---
+
+<div class={`flow-visual ${compact ? "flow-visual-compact" : ""}`}>
+  <div class="flow-card flow-card-source">
+    <span class="flow-dot"></span>
+    <p>New request</p>
+    <strong>Qualified</strong>
+  </div>
+  <div class="flow-card flow-card-target">
+    <span class="flow-dot flow-dot-warm"></span>
+    <p>Operations</p>
+    <strong>Updated</strong>
+  </div>
+  <div class="flow-core">
+    <span class="flow-core-ring"></span>
+    <span class="flow-core-ring flow-core-ring-delay"></span>
+    <span class="flow-core-mark">AI</span>
+  </div>
+  <div class="flow-lane">
+    {steps.map((step, index) => (
+      <div class="flow-step" style={`--step-index: ${index}`}>
+        <span>{index + 1}</span>
+        <p>{step}</p>
+      </div>
+    ))}
+  </div>
+  <div class="flow-lines" aria-hidden="true">
+    <span class="flow-line flow-line-1"></span>
+    <span class="flow-line flow-line-2"></span>
+    <span class="flow-line flow-line-3"></span>
+  </div>
+</div>

@@ -1,0 +1,46 @@
+{
+  "main": [
+    {
+      "key": "home",
+      "url": "/"
+    },
+    {
+      "key": "automation",
+      "url": "/automation"
+    },
+    {
+      "key": "resources",
+      "url": "/ressourcen"
+    },
+    {
+      "key": "portfolio",
+      "url": "/portfolio"
+    },
+    {
+      "key": "pricing",
+      "url": "/pricing"
+    },
+    {
+      "key": "services",
+      "url": "/services"
+    },
+    {
+      "key": "contact",
+      "url": "/kontakt"
+    }
+  ],
+  "footer": [
+    {
+      "key": "impressum",
+      "url": "/impressum"
+    },
+    {
+      "key": "privacy",
+      "url": "/privacy-policy"
+    },
+    {
+      "key": "contact",
+      "url": "/kontakt"
+    }
+  ]
+}

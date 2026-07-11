@@ -1,0 +1,117 @@
+---
+import config from "@/config/config.json";
+import Base from "@/layouts/Base.astro";
+import i18n from "@/config/i18n.json";
+import { FaAddressCard, FaEnvelope, FaPaperPlane } from "react-icons/fa";
+
+const lang = Astro.url.searchParams.get("lang") ?? "de";
+const t = i18n[lang] || i18n.de;
+const { address, email } = config.contactinfo;
+const web3formsKey = config.params.web3forms_access_key;
+const formAction = web3formsKey ? "https://api.web3forms.com/submit" : "#";
+const isFormPreview = !web3formsKey;
+const thankYouUrl = `${config.site.base_url}/thank-you?lang=en`;
+---
+
+<Base
+  title={t.contact.title}
+  meta_title="AI Automation Consultation Vienna | enta.at"
+  description={t.contact.subtitle}
+>
+  <section class="section border-b border-slate-200 bg-[linear-gradient(180deg,#F7F6F4_0%,#FFFFFF_82%)] pt-20">
+    <div class="container">
+      <div class="mx-auto max-w-4xl">
+        <div class="mb-10 text-center">
+          <p data-i18n="contact.title" class="text-primary text-sm font-semibold uppercase tracking-[0.4em] mb-4">
+            {t.contact.title}
+          </p>
+          <h1 data-i18n="contact.title" class="text-4xl font-bold mb-6">{t.contact.title}</h1>
+          <p data-i18n="contact.subtitle" class="mx-auto max-w-2xl text-lg text-text-dark/80">{t.contact.subtitle}</p>
+        </div>
+        <div class="grid gap-6 md:grid-cols-[0.95fr_1.05fr]">
+          <div class="overflow-hidden rounded-2xl border border-slate-200 bg-white">
+            <img
+              src="/images/team-automation.png"
+              alt="Business team discussing an automation project"
+              class="h-full min-h-[280px] w-full object-cover object-center"
+              loading="lazy"
+            />
+          </div>
+          <div class="grid gap-5">
+            <article class="rounded-2xl border border-slate-200 bg-white p-6">
+              <div class="mb-4 flex h-11 w-11 items-center justify-center rounded-lg bg-primary/10 text-primary">
+                <FaEnvelope />
+              </div>
+              <h2 class="mb-2 text-xl font-bold">E-Mail</h2>
+              <p class="font-semibold text-slate-700">{email}</p>
+            </article>
+            <article class="rounded-2xl border border-slate-200 bg-white p-6">
+              <div class="mb-4 flex h-11 w-11 items-center justify-center rounded-lg bg-primary/10 text-primary">
+                <FaAddressCard />
+              </div>
+              <h2 class="mb-2 text-xl font-bold">{lang === "en" ? "Location" : "Standort"}</h2>
+              <p class="font-semibold text-slate-700">{address}</p>
+            </article>
+          </div>
+        </div>
+        <form
+          id="contact-form-en"
+          action={formAction}
+          method="POST"
+          class={`mt-8 rounded-2xl border border-slate-200 bg-white p-6 md:p-8`}
+        >
+          <div class="mb-6 flex flex-wrap items-center justify-between gap-3">
+            <div>
+              <p class="text-sm font-bold uppercase tracking-[0.24em] text-primary">
+                {lang === "en" ? "Contact form" : "Kontaktformular"}
+              </p>
+              <h2 class="mt-2 text-2xl font-bold text-slate-950">
+                {lang === "en" ? "Tell me what you want to automate" : "Sagen Sie mir, was Sie automatisieren möchten"}
+              </h2>
+            </div>
+          </div>
+          {web3formsKey && <input type="hidden" name="access_key" value={web3formsKey} />}
+          {web3formsKey && <input type="hidden" name="redirect" value={thankYouUrl} />}
+          <input type="hidden" name="subject" value="New message from enta.at" />
+          <input type="checkbox" name="botcheck" class="hidden" tabindex="-1" autocomplete="off" />
+          <div class="grid gap-4 md:grid-cols-2">
+            <div>
+              <label class="mb-2 block font-semibold" for="name">{t.contact.fields.name}</label>
+              <input id="name" class="form-input w-full rounded-lg border-slate-200" name="name" type="text" required disabled={isFormPreview} />
+            </div>
+            <div>
+              <label class="mb-2 block font-semibold" for="email">{t.contact.fields.email}</label>
+              <input id="email" class="form-input w-full rounded-lg border-slate-200" name="email" type="email" required disabled={isFormPreview} />
+            </div>
+            <div class="md:col-span-2">
+              <label class="mb-2 block font-semibold" for="message">{t.contact.fields.message}</label>
+              <textarea id="message" class="form-textarea w-full rounded-lg border-slate-200" name="message" rows="5" required disabled={isFormPreview} />
+            </div>
+          </div>
+          {web3formsKey && (
+            <div class="mt-5">
+              <div class="h-captcha" data-captcha="true" data-lang="en"></div>
+            </div>
+          )}
+          <button class="btn btn-primary mt-5 gap-2 text-white" type="submit" aria-disabled={isFormPreview}>
+            <FaPaperPlane />
+            {t.contact.fields.button}
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
+  {web3formsKey && <script src="https://web3forms.com/client/script.js" async defer></script>}
+  {web3formsKey && (
+    <script is:inline>
+      const contactForm = document.getElementById("contact-form-en");
+      contactForm?.addEventListener("submit", (event) => {
+        const token = contactForm.querySelector('textarea[name="h-captcha-response"]')?.value;
+        if (!token) {
+          event.preventDefault();
+          alert("Please complete the hCaptcha check.");
+        }
+      });
+    </script>
+  )}
+</Base>

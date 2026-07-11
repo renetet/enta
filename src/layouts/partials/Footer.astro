@@ -1,0 +1,126 @@
+---
+import Social from "@/components/Social.astro";
+import config from "@/config/config.json";
+import i18n from "@/config/i18n.json";
+import menu from "@/config/menu.json";
+import social from "@/config/social.json";
+import { markdownify } from "@/lib/utils/textConverter";
+import { FaEnvelope, FaGithub, FaLinkedin } from "react-icons/fa";
+type LangCode = "de" | "en";
+const urlLang = Astro.url.searchParams.get("lang");
+
+const routeMap: Record<string, Record<string, string>> = {
+  "/": { de: "/", en: "/" },
+  "/automation": { de: "/automation", en: "/automation" },
+  "/kontakt": { de: "/kontakt", en: "/contact" },
+  "/contact": { de: "/kontakt", en: "/contact" },
+  "/privacy-policy": { de: "/privacy-policy", en: "/privacy-policy" },
+  "/ressourcen": { de: "/ressourcen", en: "/free-resources" },
+  "/free-resources": { de: "/ressourcen", en: "/free-resources" },
+  "/usluge": { de: "/services", en: "/services" },
+  "/services": { de: "/services", en: "/services" },
+};
+
+function normalizePath(path: string) {
+  const raw = path.split("?")[0].trim();
+  const trimmed = raw.replace(/\/+$|^\s+|\s+$/g, "");
+  if (trimmed === "" || trimmed === "/") return "/";
+  return trimmed.startsWith("/") ? trimmed : `/${trimmed}`;
+}
+
+function localizedPath(path: string, code: string) {
+  return routeMap[normalizePath(path)]?.[code] ?? normalizePath(path);
+}
+
+function detectLangByPath(path: string) {
+  const normalized = normalizePath(path);
+  if (normalized === "/contact" || normalized === "/free-resources") return "en";
+  if (normalized === "/kontakt" || normalized === "/ressourcen") return "de";
+  return "de";
+}
+
+const currentLang = (urlLang === "en" ? "en" : urlLang === "de" ? "de" : detectLangByPath(Astro.url.pathname)) as LangCode;
+const t = i18n[currentLang];
+
+function buildLangUrl(url: string, code: LangCode) {
+  if (!url) return "#";
+  const [rawPath, rawQuery] = url.split("?");
+  const path = normalizePath(rawPath);
+  const target = localizedPath(path, code);
+  const params = new URLSearchParams(rawQuery || "");
+  params.set("lang", code);
+  return `${target}?${params.toString()}`;
+}
+
+function hrefWithLang(url: string) {
+  return buildLangUrl(url, currentLang);
+}
+
+function navLabel(item: { key?: string; name?: string }) {
+  const key = item.key as keyof typeof t.nav;
+  return key ? t.nav[key] : item.name;
+}
+---
+<footer class="footer-cool section relative overflow-hidden border-t border-slate-200 bg-[#f8f7f5]">
+  <div class="container relative z-10">
+    <div class="grid gap-10 text-center lg:grid-cols-[1.15fr_0.75fr_0.75fr] lg:text-left">
+      <div>
+        <img src="/images/logo-aia.svg?v=5" alt="enta.at" class="mx-auto mb-5 h-auto w-[235px] lg:mx-0" />
+        <p class="max-w-xl text-lg leading-8 text-slate-600">
+          {currentLang === "en"
+            ? "Lean AI automation for teams that want fewer manual tasks and cleaner operations."
+            : "Schlanke AI-Automatisierung für Teams, die weniger manuelle Arbeit und klarere Abläufe wollen."}
+        </p>
+        <div class="mt-6 flex flex-wrap justify-center gap-3 lg:justify-start">
+          {["n8n", "Ollama", "OpenAI", "Paperclip"].map((item) => (
+            <span class="rounded-full border border-slate-200 bg-white/80 px-3 py-1 text-xs font-bold text-slate-600">
+              {item}
+            </span>
+          ))}
+        </div>
+      </div>
+      <div>
+        <p class="mb-4 text-sm font-bold uppercase tracking-[0.24em] text-primary">Navigation</p>
+        <ul class="space-y-2">
+          {
+            menu.footer.map((menuItem) => (
+              <li class="block">
+                <a
+                  href={hrefWithLang(menuItem.url)}
+                  class="inline-flex text-sm font-bold text-slate-600 transition hover:text-primary"
+                  data-i18n={menuItem.key ? `nav.${menuItem.key}` : undefined}
+                >
+                  {navLabel(menuItem)}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+      <div>
+        <p class="mb-4 text-sm font-bold uppercase tracking-[0.24em] text-primary">
+          {currentLang === "en" ? "Connect" : "Kontakt"}
+        </p>
+        <div class="space-y-2">
+          <a href="mailto:info@enta.at" class="flex items-center justify-center gap-3 text-sm font-bold text-slate-600 transition hover:text-primary lg:justify-start">
+            <FaEnvelope className="text-primary" />
+            info@enta.at
+          </a>
+          <span class="flex items-center justify-center gap-3 text-sm font-bold text-slate-500 lg:justify-start">
+            <FaLinkedin className="text-primary" />
+            LinkedIn
+          </span>
+          <span class="flex items-center justify-center gap-3 text-sm font-bold text-slate-500 lg:justify-start">
+            <FaGithub className="text-primary" />
+            GitHub
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="mt-10 border-t border-slate-200 px-4 pt-6 text-center">
+      <p data-i18n-html="footer.copyright" class="text-sm font-semibold text-slate-500">
+        {t.footer.copyright}
+      </p>
+    </div>
+  </div>
+</footer>

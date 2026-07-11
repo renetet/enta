@@ -1,0 +1,22 @@
+---
+const { compact = false } = Astro.props;
+const integrations = [
+  { name: "n8n", tone: "warm" },
+  { name: "Ollama", tone: "soft" },
+  { name: "OpenAI", tone: "crest" },
+  { name: "Claude", tone: "warm" },
+  { name: "Gemini", tone: "blue" },
+  { name: "Make", tone: "soft" },
+  { name: "Zapier", tone: "warm" },
+  { name: "Paperclip", tone: "crest" },
+];
+---
+
+<div class={`integration-strip ${compact ? "integration-strip-compact" : ""}`}>
+  {integrations.map((item, index) => (
+    <span class={`integration-badge integration-${item.tone}`} style={`--badge-index: ${index}`}>
+      <span class="integration-mark">{item.name.slice(0, 2)}</span>
+      <span>{item.name}</span>
+    </span>
+  ))}
+</div>
